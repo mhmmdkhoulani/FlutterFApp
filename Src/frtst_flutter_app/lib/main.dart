@@ -13,7 +13,7 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Radndomizer',
-      home: const RangeSelectorPage(),
+      home: RangeSelectorPage(),
     );
   }
 }
