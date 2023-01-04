@@ -1,10 +1,11 @@
+import 'package:Cardjy/main.dart';
 import 'package:Cardjy/randomizer_change_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 typedef InValueSetter = void Function(int value);
 
-class RangeSelectorForm extends StatelessWidget {
+class RangeSelectorForm extends ConsumerWidget {
   const RangeSelectorForm({
     Key? key,
     required this.formKey,
@@ -13,7 +14,8 @@ class RangeSelectorForm extends StatelessWidget {
   final GlobalKey<FormState> formKey;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final randomaizer = ref.watch(randomizerProvider);
     return Form(
       key: formKey,
       child: Padding(
@@ -24,7 +26,7 @@ class RangeSelectorForm extends StatelessWidget {
             RangeSelectorInputFormField(
               lableText: 'Minimum',
               intValueSetter: (value) =>
-                  context.read<RandomizerChangeNotifier>().min = value,
+                  ref.read(randomizerProvider).min = value,
             ),
             const SizedBox(
               height: 20,
@@ -32,7 +34,7 @@ class RangeSelectorForm extends StatelessWidget {
             RangeSelectorInputFormField(
               lableText: 'Maximum',
               intValueSetter: (value) =>
-                  context.read<RandomizerChangeNotifier>().max = value,
+                  ref.read(randomizerProvider).max = value,
             ),
           ],
         ),
