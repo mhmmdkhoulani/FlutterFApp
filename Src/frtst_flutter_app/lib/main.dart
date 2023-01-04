@@ -1,4 +1,4 @@
-import 'package:Cardjy/randomizer_change_notifier.dart';
+import 'package:Cardjy/randomizer_state_notifier.dart';
 import 'package:Cardjy/range_selector_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,8 +8,9 @@ void main() {
 }
 
 final randomizerProvider =
-    ChangeNotifierProvider((ref) => RandomizerChangeNotifier());
- 
+    StateNotifierProvider<RandomizerStateNotifier, RandomizerState>(
+        (ref) => RandomizerStateNotifier());
+
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
 

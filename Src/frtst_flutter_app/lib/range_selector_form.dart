@@ -1,5 +1,5 @@
 import 'package:Cardjy/main.dart';
-import 'package:Cardjy/randomizer_change_notifier.dart';
+import 'package:Cardjy/randomizer_state_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,7 +26,7 @@ class RangeSelectorForm extends ConsumerWidget {
             RangeSelectorInputFormField(
               lableText: 'Minimum',
               intValueSetter: (value) =>
-                  ref.read(randomizerProvider).min = value,
+                  ref.read(randomizerProvider.notifier).setMin(value),
             ),
             const SizedBox(
               height: 20,
@@ -34,7 +34,7 @@ class RangeSelectorForm extends ConsumerWidget {
             RangeSelectorInputFormField(
               lableText: 'Maximum',
               intValueSetter: (value) =>
-                  ref.read(randomizerProvider).max = value,
+                  ref.read(randomizerProvider.notifier).setMax(value),
             ),
           ],
         ),
